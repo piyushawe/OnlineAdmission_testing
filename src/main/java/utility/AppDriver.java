@@ -1,7 +1,11 @@
 package utility;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +29,12 @@ public class AppDriver {
         }
         return driver;
     }
+    /*public void wait(){
+        WebDriverWait wait= new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.textToBePresentInElement(By.id("areaToPrint"),"   \n" +
+                "Payment Successful\n" +
+                "  "));
+    }*/
 
     public void getUrl(String url){
         driver.get(url);

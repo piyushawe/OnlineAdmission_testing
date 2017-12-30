@@ -2,6 +2,7 @@ package pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utility.GenericClass;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ public class OnlineRegistration extends GenericClass {
 
     String cardNo = "5123 4567 8901 2346";
     String expiryDate = "05";
-    String expiryYear = "2020";
+    String expiryYear = "20";
     String cvv = "123";
 
     public OnlineRegistration(WebDriver d) {
@@ -220,12 +221,14 @@ public class OnlineRegistration extends GenericClass {
         ehandler.switchToAlert();
     }
 
-    public void clickProceedToOnlinePayment() throws IOException {
+    public void clickProceedToOnlinePayment() throws IOException, InterruptedException {
         ehandler.click(readFile.getElement("proceedtoonlinepayment"));
+        Thread.sleep(5000);
     }
 
-    public void clickDebitCreditcard() throws IOException {
+    public void clickDebitCreditcard() throws IOException, InterruptedException {
         ehandler.click(readFile.getElement("debitcreditcard"));
+        Thread.sleep(12000);
     }
 
     public void enterCardNumber() throws IOException {
@@ -240,11 +243,21 @@ public class OnlineRegistration extends GenericClass {
         ehandler.enterText(readFile.getElement("expiryyear"), expiryYear);
     }
 
-    public void enterCvv() throws IOException {
+    public void enterCvv() throws IOException, InterruptedException {
         ehandler.enterText(readFile.getElement("cvvno"), cvv);
+        Thread.sleep(12000);
     }
 
     public void clickPay() throws IOException {
         ehandler.click(readFile.getElement("clickpay"));
+
+    }
+    public void uploadPhoto() throws IOException, InterruptedException {
+        ehandler.click(readFile.getElement("choosefile"));
+        Runtime.getRuntime().exec("D:\\autoit_Image.exe");
+        ehandler.click(readFile.getElement("uploadfile"));
+        Thread.sleep(5000);
+        ehandler.click(readFile.getElement("submit"));
+        Thread.sleep(5000);
     }
 }

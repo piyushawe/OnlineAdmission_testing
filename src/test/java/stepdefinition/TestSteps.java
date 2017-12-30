@@ -4,6 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.WebDriver;
 import pageobjects.OnlineRegistration;
 import utility.AppDriver;
 import utility.GenericClass;
@@ -247,10 +248,18 @@ public class TestSteps extends GenericClass {
 
     @Then("^make payment$")
     public void makePayment() throws Throwable {
+        new OnlineRegistration(driver).clickProceedToOnlinePayment();
+        new OnlineRegistration(driver).clickDebitCreditcard();
         new OnlineRegistration(driver).enterCardNumber();
         new OnlineRegistration(driver).enterExpiryDate();
         new OnlineRegistration(driver).enterExpiryYear();
         new OnlineRegistration(driver).enterCvv();
         new OnlineRegistration(driver).clickPay();
+    }
+
+    @Then("^upload photo$")
+    public void uploadPhoto() throws Throwable {
+        new OnlineRegistration(driver).uploadPhoto();
+
     }
 }
