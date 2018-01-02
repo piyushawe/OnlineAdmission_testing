@@ -33,12 +33,15 @@ public class EventHandler {
         }
     }
 
-    public void switchToAlert(){
+    public void switchToAlert() throws InterruptedException {
+        Thread.sleep(3000);
+        System.out.println(driver.switchTo().alert().getText());
         driver.switchTo().alert().accept();
     }
 
     public void selectDate(WebElement date, String mm, String yy, String dd) throws IOException, InterruptedException {
         click(date);
+        Thread.sleep(1000);
         selectByVisibleText(new UIMap().getMonthPicker(), mm);
         selectByVisibleText(new UIMap().getYearPicker(), yy);
         selectValueFromTable(new UIMap().getDayPicker(), dd);

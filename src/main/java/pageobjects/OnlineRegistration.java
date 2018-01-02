@@ -3,6 +3,7 @@ package pageobjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utility.AppDriver;
 import utility.GenericClass;
 
 import java.io.IOException;
@@ -253,8 +254,18 @@ public class OnlineRegistration extends GenericClass {
 
     }
     public void uploadPhoto() throws IOException, InterruptedException {
+        Thread.sleep(5000);
         ehandler.click(readFile.getElement("choosefile"));
-        Runtime.getRuntime().exec("D:\\autoit_Image.exe");
+        new AppDriver().waitforelement();
+        try {
+            System.out.println("1");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "D:\\Testing1.exe");
+            System.out.println("11");
+        }
+        catch (Exception e){
+            System.out.println("exception is:" + e);
+            System.out.println("122");
+        }
         ehandler.click(readFile.getElement("uploadfile"));
         Thread.sleep(5000);
         ehandler.click(readFile.getElement("submit"));
