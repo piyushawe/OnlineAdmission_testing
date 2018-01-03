@@ -4,7 +4,6 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebDriver;
 import pageobjects.OnlineRegistration;
 import utility.AppDriver;
 import utility.GenericClass;
@@ -13,7 +12,7 @@ import static utility.AppDriver.driver;
 
 public class TestSteps extends GenericClass {
 
-    AppDriver ad = new AppDriver();
+    private AppDriver ad = new AppDriver();
 
     @Given("^for url$")
     public void for_url() throws Throwable {
@@ -249,7 +248,7 @@ public class TestSteps extends GenericClass {
     @Then("^make payment$")
     public void makePayment() throws Throwable {
         new OnlineRegistration(driver).clickProceedToOnlinePayment();
-        new OnlineRegistration(driver).clickDebitCreditcard();
+        new OnlineRegistration(driver).clickDebitCreditCard();
         new OnlineRegistration(driver).enterCardNumber();
         new OnlineRegistration(driver).enterExpiryDate();
         new OnlineRegistration(driver).enterExpiryYear();
@@ -259,7 +258,6 @@ public class TestSteps extends GenericClass {
 
     @Then("^upload photo$")
     public void uploadPhoto() throws Throwable {
-        new OnlineRegistration(driver).uploadPhoto();
-
+        new OnlineRegistration(driver).upLoadPhoto();
     }
 }
